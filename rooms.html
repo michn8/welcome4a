@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta charset="UTF-8">
+	<title>Welcome Nursing</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="themes/welcome5a.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+</head> 
+<body> 
+<div id="roomsPage" data-role="page" data-add-back-btn="true">
+	
+    	<div data-role="header" data-position="fixed"> 
+		<h1 style="text-align:center"> Our Rooms</h1>
+             <a href="index.html" data-icon="back" data-iconpos="notext" data-direction="reverse" class="ui-btn-left" title="Back">Back</a>
+             <a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right" title="Home">Home</a>
+	</div> 
+
+	<div data-role="content">
+ <br />
+
+        	<center>
+             <img style="text-align:center;height:150px" src="images/caring2.jpg" id="logo"></img></center>
+        <div>
+	<div class="choice_list"> 
+	
+	<ul id="rooms_listview" data-role="listview" data-inset="true" >
+
+	</ul>	
+<!--	<br />-->
+	</div>
+	</div>
+	</div>
+                	<div data-role="footer" data-position="fixed"> 
+		<h1> </h1>
+
+	</div> 
+        <div data-role="footer" data-position="fixed" style="font-size:smaller">
+            <h6>MNB LLC 2013 All Rights Reserved</h6>
+
+        </div>
+                    <script src="scripts/globals.js"></script>
+    <script src="scripts/rooms.js"></script>
+</div><!-- /page -->
+
+</body>
+</html>

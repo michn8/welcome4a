@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or http://ckeditor.com/license
+-->
+<html>
+<head>
+    <title>Replace Textareas by Class Name &mdash; CKEditor Sample</title>
+    <meta charset="utf-8">
+    <script src="../ckeditor.js"></script>
+    <!--    <link href="../../themes/welcome5a.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="sample.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="json2.js"></script>
+    <style>
+        /*body {
+padding: 20px;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 1.5;
+font-size: 14px;        
+}*/
+
+        /*#dtTable td { text-align: right }*/
+
+        .tabs-menu {
+            height: 30px;
+            float: left;
+            clear: both;
+        }
+
+            .tabs-menu li {
+                height: 30px;
+                line-height: 30px;
+                float: left;
+                margin-right: 10px;
+                background-color: #ccc;
+                border-top: 1px solid #d4d4d1;
+                border-right: 1px solid #d4d4d1;
+                border-left: 1px solid #d4d4d1;
+            }
+
+                .tabs-menu li.current {
+                    position: relative;
+                    background-color: #fff;
+                    border-bottom: 1px solid #fff;
+                    z-index: 5;
+                }
+
+                .tabs-menu li a {
+                    padding: 10px;
+                    text-transform: uppercase;
+                    /*color: #fff;*/
+                    color: #000000;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+
+            .tabs-menu .current a {
+                color: #2e7da3;
+            }
+
+        .tab {
+            border: 1px solid #d4d4d1;
+            background-color: #fff;
+            float: left;
+            margin-bottom: 20px;
+            width: auto;
+        }
+
+        .tab-content {
+            /*width: 1000px;*/
+            padding: 20px;
+            display: none;
+        }
+
+        #tab-1 {
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div style="text-align: center">
+        <h1 class="samples" style="color: white">Welcome Nursing CMS 
+        </h1>
+    </div>
+
+    <form method="post">
+        <div style="height:800px">
+            <div id="tabs-container">
+                <ul class="tabs-menu">
+                    <li class="current"><a href="#tab-1">Programs</a></li>
+                    <li><a href="#tab-2">Rooms</a></li>
+                    <li><a href="#tab-3">Careers</a></li>
+
+                </ul>
+                <div class="tab" style="height: 740px; overflow-y: auto">
+                    <div id="tab-1" class="tab-content">
+
+
+                        <table style="width: 100%" id="tab1_edit">
+                            <tr>
+                                <td style="width: 50%; vertical-align: top">
+                                    <div class="description" style="overflow-y: auto; height: 300px">
+                                        <input style="width: 20px; display: none" type="text" id="txt_tab1_id" />
+
+                                        <p>
+                                            <label for="txt_tab1_name" style="font-weight: bold">
+                                                Name:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_name" />
+                                        </p>
+
+                                        <p>
+                                            <label for="txt_tab1_descrip" style="font-weight: bold">
+                                                Description:
+                                            </label>
+                                            <textarea cols="60" rows="5" type="text" id="txt_tab1_descrip"></textarea>
+
+                                        <p>
+                                            <label for="txt_tab1_date" style="font-weight: bold">
+                                                Date:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_date" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab1_contact" style="font-weight: bold">
+                                                Contact:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_contact" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab1_email" style="font-weight: bold">
+                                                Email:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_email" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab1_phone" style="font-weight: bold">
+                                                Phone:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_phone" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab1_link" style="font-weight: bold">
+                                                Admission:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_link" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab1_Image" style="font-weight: bold">
+                                                Image Path:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab1_Image" />
+                                        </p>
+
+
+                                    </div>
+
+                                </td>
+                             
+                                <td style="width: 50%; vertical-align: top; text-align: right">
+
+                                    <table cellpadding="0" class="actions" cellspacing="0" border="0" id="tbl_tab1_list" style="width: 90%; text-align: right">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">id
+                                                </th>
+                                                <th width="60%">Name
+                                                </th>
+
+                                                <th width="10%">Date
+                                                </th>
+                                                <th width="20%">Contact
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <br />
+
+                                    <center> <label id="loadingService" style="font-size:larger"><img id="loadingImage" style="width:80px;height:80px" src="loader.jpg"/> <br />Processing...  </label></center>
+                                </td>
+                            </tr>
+
+                            <!--                    <tr>
+    <td colspan="2" style="width:45%;text-align:center"><input type="button" style="height:30px;width:120px" value="SAVE" style="width: 100px" onclick="SaveService()">
+	  </td><td>&nbsp;</td>
+</tr>-->
+
+                            <tr>
+                                <td style="width: 50%">
+                                    <div style="text-align: left; float: left">
+                                        <input type="button" style="height: 30px; width: 80px" id="Button1" value="ADD NEW" onclick="DoNewService()"></div>
+                                    <div style="text-align: right; float: right">
+                                        <input type="button" style="height: 30px; width: 120px" value="SAVE" onclick="    SaveService()">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" style="height: 30px; width: 80px" value="CANCEL" onclick="    DoNewService()">
+                                    </div>
+                                </td>
+                                <td style="font-size: larger; width: 50%; text-align: center">&nbsp;***Click Item above to edit.</td>
+                            </tr>
+
+                        </table>
+
+
+
+                    </div>
+                    <div id="tab-2" class="tab-content">
+
+                        <table style="width: 100%" id="Table1">
+                            <tr>
+                                <td style="width: 50%; vertical-align: top">
+                                    <div class="description" style="overflow: scroll; height: 300px">
+                                        <input style="width: 20px; display: none" type="text" id="txt_tab2_id" />
+
+                                        <p>
+                                            <label for="txt_tab2_name" style="font-weight: bold">
+                                                Name:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_name" />
+                                        </p>
+
+                                        <p>
+                                            <label for="txt_tab2_descrip" style="font-weight: bold">
+                                                Description:
+                                            </label>
+                                            <textarea cols="60" rows="5" type="text" id="txt_tab2_descrip"></textarea>
+
+                                        <p>
+                                            <label for="txt_tab2_date" style="font-weight: bold">
+                                                Date:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_date" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab2_contact" style="font-weight: bold">
+                                                Contact:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_contact" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab2_email" style="font-weight: bold">
+                                                Email:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_email" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab2_phone" style="font-weight: bold">
+                                                Phone:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_phone" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab2_link" style="font-weight: bold">
+                                                Admission:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_link" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab2_Image" style="font-weight: bold">
+                                                Image Path:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab2_Image" />
+                                        </p>
+
+
+                                    </div>
+
+                                </td>
+                            
+                                <td style="width: 50%; vertical-align: top; text-align: right">
+
+                                    <table cellpadding="0" class="actions" cellspacing="0" border="0" id="tbl_tab2_list" style="width: 90%; text-align: right">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">id
+                                                </th>
+                                                <th width="60%">Name
+                                                </th>
+
+                                                <th width="10%">Date
+                                                </th>
+                                                <th width="20%">Contact
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <br />
+
+                                    <center> <label id="loadingRoom" style="font-size:larger"><img id="Img1" style="width:80px;height:80px" src="loader.jpg"/> <br />Processing...  </label></center>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 50%">
+                                    <div style="text-align: left; float: left">
+                                        <input type="button" style="height: 30px; width: 80px" id="btn_Add_room" value="ADD NEW" onclick="DoNewRoom()"></div>
+                                    <div style="text-align: right; float: right">
+                                        <input type="button" style="height: 30px; width: 120px" value="SAVE" onclick="SaveRoom()">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" style="height: 30px; width: 80px" value="CANCEL" onclick="    DoNewRoom()">
+                                    </div>
+                                </td>
+                                <td style="font-size: larger; width: 50%; text-align: center">&nbsp;***Click Item above to edit.</td>
+                            </tr>
+
+                        </table>
+
+
+
+
+                    </div>
+                    <div id="tab-3" class="tab-content">
+
+                        <table style="width: 100%" id="Table3">
+                            <tr>
+                                <td style="width: 50%; vertical-align: top">
+                                    <div class="description" style="overflow: scroll; height: 300px">
+                                        <input style="width: 20px; display: none" type="text" id="txt_tab3_id" />
+
+                                        <p>
+                                            <label for="txt_tab3_name" style="font-weight: bold">
+                                                Name:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_name" />
+                                        </p>
+
+                                        <p>
+                                            <label for="txt_tab3_descrip" style="font-weight: bold">
+                                                Description:
+                                            </label>
+                                            <textarea cols="60" rows="5" type="text" id="txt_tab3_descrip"></textarea>
+
+                                        <p>
+                                            <label for="txt_tab3_date" style="font-weight: bold">
+                                                Date:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_date" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab3_contact" style="font-weight: bold">
+                                                Contact:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_contact" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab3_email" style="font-weight: bold">
+                                                Email:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_email" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab3_phone" style="font-weight: bold">
+                                                Phone:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_phone" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab3_link" style="font-weight: bold">
+                                                Admission:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_link" />
+                                        </p>
+                                        <p>
+                                            <label for="txt_tab3_Image" style="font-weight: bold">
+                                                Image Path:
+                                            </label>
+                                            <input style="width: 300px" type="text" id="txt_tab3_Image" />
+                                        </p>
+
+
+                                    </div>
+
+                                </td>
+                    
+                                <td style="width: 50%; vertical-align: top; text-align: right">
+
+                                    <table cellpadding="0" class="actions" cellspacing="0" border="0" id="tbl_tab3_list" style="width: 90%; text-align: right">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">id
+                                                </th>
+                                                <th width="60%">Name
+                                                </th>
+
+                                                <th width="10%">Date
+                                                </th>
+                                                <th width="20%">Contact
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <br />
+
+                                    <center> <label id="loadingCareer" style="font-size:larger"><img id="Img2" style="width:80px;height:80px" src="loader.jpg"/> <br />Processing...  </label></center>
+
+
+                                </td>
+                            </tr>
+                            <!--<tr>
+    <td colspan="2" style="width:45%;text-align:center"><input type="button" style="height:30px;width:120px" value="SAVE" style="width: 100px" onclick="SaveCareer()">
+	  </td><td>&nbsp;</td>
+</tr>-->
+
+                            <tr>
+                                <td style="width: 50%">
+                                    <div style="text-align: left; float: left">
+                                        <input type="button" style="height: 30px; width: 80px" id="Button2" value="ADD NEW" onclick="DoNewCareer()"></div>
+                                    <div style="text-align: right; float: right">
+                                        <input type="button" style="height: 30px; width: 120px" value="SAVE" onclick="SaveCareer()">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" style="height: 30px; width: 80px" value="CANCEL" onclick="    DoNewCareer()">
+                                    </div>
+                                </td>
+                                <td style="font-size: larger; width: 50%; text-align: center">&nbsp;***Click Item above to edit.</td>
+                            </tr>
+                        </table>
+
+
+
+
+
+                    </div>
+                    <p>
+
+
+                        <textarea class="ckeditor" cols="80" id="editor1" name="editor1" rows="7">
+				
+			</textarea>
+                    </p>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+
+
+
+    <script>
+
+
+
+    </script>
+    <script src="service.js"></script>
+    <script src="rooms.js"></script>
+    <script src="career.js"></script>
+
+    <script src="globals.js"></script>
+
+
+</body>
+
+</html>

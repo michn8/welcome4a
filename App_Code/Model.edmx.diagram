@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a4578d7206c47f1b765acdda7536b54" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_14781_testdbModel.school_events" Width="1.5" PointX="1.0193603322931382" PointY="1.4595982141138977" />
+        <EntityTypeShape EntityType="DB_14781_testdbModel.school_news" Width="1.5" PointX="10.749121365486236" PointY="24.26538483438333" />
+        <EntityTypeShape EntityType="DB_14781_testdbModel.health_career" Width="1.5" PointX="3.875" PointY="4.375" />
+        <EntityTypeShape EntityType="DB_14781_testdbModel.health_services" Width="1.5" PointX="3.625" PointY="0.875" />
+        <EntityTypeShape EntityType="DB_14781_testdbModel.health_news" Width="1.5" PointX="6.375" PointY="1" />
+        <EntityTypeShape EntityType="DB_14781_testdbModel.health_rooms" Width="1.5" PointX="8.875" PointY="2.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

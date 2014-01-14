@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta charset="UTF-8">
+	<title>Welcome Nursing</title> 
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="themes/welcome5a.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+</head> 
+<body> 
+<div id="contactPage" data-role="page" data-add-back-btn="true">
+	
+    	<div data-role="header" data-position="fixed"> 
+		<h1 style="text-align:center"> Contact</h1>
+             <a href="index.html" data-icon="back" data-iconpos="notext" data-direction="reverse" class="ui-btn-left" title="Back">Back</a>
+             <a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right" title="Home">Home</a>
+	</div> 
+
+	<div data-role="content">
+    <div style="text-align:center">
+  	<div id="contact_infos">	
+        <!--  <table><tr><td style="text-align:center">	-->
+		<div style="text-align:center">
+		<a href="http://www.google.fr" target="_blank" ><img style="text-align:center"  src="images/01_maps.jpg" alt="plan jeanette"/></a>
+		</div>
+             <!-- </td></tr></table>-->
+	</div>
+        </div> 
+        <!-- /grid-a -->
+	<div id="contact_buttons">	
+<!--		<a href="http://maps.google.fr/maps?q=jeannette+et+les+cycleux&hl=fr&sll=46.75984,1.738281&sspn=10.221882,18.764648&hq=jeannette+et+les+cycleux&t=m&z=13&iwloc=A" data-role="button" data-icon="maps"> Find us on Google Maps </a> 	-->
+	<a href="tel:1111111111"  data-role="button"><img src="images/telephone.jpg" style="width:30px;height:30px;vertical-align:middle"> Call us </a>	
+	</div>	
+	<br />
+<!--        	<center>
+             <img style="text-align:center;height:150px" src="images/welcomehome.jpg" id="logo"></img>
+        </center>-->
+                <div class="ui-body ui-body-e ui-corner-all">        <p>
+   <p><label for="txt_name" style="font-weight: bold">
+				Your Name:
+			</label><input style="width:300px" type="text" id="txt_name"/>
+		</p>
+    
+              <p><label for="txt_descrip" style="font-weight: bold">
+				Enter Message:
+			</label><textarea cols="80" rows="5" id="txt_descrip"></textarea>
+                  </p>
+	
+              <p><label for="txt_date" style="font-weight: bold">
+				Contact Phone or Email:
+			</label><input style="width:300px" type="text" id="txt_date"/>
+		</p>
+<br />
+     
+
+        	<p>
+			<input type="button" value="Submit" style="width: 100px" onclick="DoEdit()">
+		</p>
+
+                </div>
+            <br />
+	</div>
+                	<div data-role="footer" data-position="fixed" style="background-color: #90000E"> 
+		<h1> </h1>
+
+	</div> 
+        <div data-role="footer" data-position="fixed" style="font-size:smaller">
+            <h6>MNB LLC 2013 All Rights Reserved</h6>
+
+        </div>
+            <script src="scripts/globals.js"></script>
+
+</div><!-- /page -->
+
+</body>
+</html>
